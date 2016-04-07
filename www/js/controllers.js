@@ -6,7 +6,8 @@ angular.module('starter.controllers', [])
   
   $scope.signIn = function(user) {
   
-      
+    // call signIn(user) on server 
+    // return error and redirect to sign in if fails
     $rootScope.user = user ;
     $state.go('tab.dash');
   
@@ -14,13 +15,35 @@ angular.module('starter.controllers', [])
   };
 
 })
-.controller('DashCtrl', function($scope, $state) {
+.controller('RegisterCtrl', function($rootScope, $scope, $state){
 
-    //console.log($state.user);
-    ///var v = $state.user;
+  $rootScope.user = null;
+  // register
+  $scope.register = function(user){
+    console.log(user);
+  }
+
+})
+.controller('ForgotPasswordCtrl', function($scope, $rootScope, $state){
+
+  $scope.forgot = function($email){
+    
+    if($email)
+      console.log($email);
+    // call forgot(email) on server
+    else
+      console.log("error");
+  }
+})
+.controller('DashCtrl', function($scope, $state, $rootScope, DashboardData) {
+
+  // show the contents of dash
+  var u = DashboardData.get($rootScope.user.username);
+  $rootScope.user = u;
+  console.log(u);
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('SearchCtrl', function($scope,$rootScope) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -28,15 +51,10 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  $scope.search = function(symptoms){
+    console.log(symptoms);
+  }
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {

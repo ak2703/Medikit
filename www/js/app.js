@@ -41,9 +41,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
     .state('forgotpassword', {
       url: '/forgot-password',
-      templateUrl: 'templates/forgot-password.html'
+      templateUrl: 'templates/forgot-password.html',
+      controller: 'ForgotPasswordCtrl'
     })
+    .state('register', {
 
+      url: '/register',
+      templateUrl: 'templates/register.html',
+      controller: 'RegisterCtrl'
+      
+    })
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -68,7 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+          controller: 'SearchCtrl'
         }
       }
     })
