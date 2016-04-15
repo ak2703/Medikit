@@ -1,28 +1,71 @@
 angular.module('starter.controllers', [])
 
 
-.controller('SignInCtrl', function($scope, $state, $rootScope){
+.controller('SignInCtrl', function($scope, $state, $rootScope, $ionicPopup, $timeout, $http){
 
   
   $scope.signIn = function(user) {
   
     // call signIn(user) on server 
+    $http.post("http://localhost:3000/signin", user).success(function(data){
+      
+      console.log(data);
+      
+      if(data.message != "Error"){
+
+        $rootScope.user = data;
+        $state.go('tab.dash');
+        
+      }
+
+      else{
+            // show popup here
+  
+                var f =function(){
+
+                 var alertPopup = $ionicPopup.alert({
+                   title: 'Error',
+                   template: 'Wrong username or password'
+                 });
+
+               alertPopup.then(function(res) {
+                $rootScope.user = null;
+                $state.go('signin');
+             });
+               
+           };
+      
+           f();
+        }
+
+      });
     // return error and redirect to sign in if fails
-    $rootScope.user = user ;
-    $state.go('tab.dash');
   
 
   };
 
 })
-.controller('RegisterCtrl', function($rootScope, $scope, $state){
+.controller('RegisterCtrl', function($rootScope, $scope, $state, $http){
 
-  $rootScope.user = null;
+  
   // register
   $scope.register = function(user){
-    console.log(user);
+    
+    $http.post("http://localhost:3000/register", user).success(function(data, status, headers, config){
+      
+        if(data.message == "Error"){
+
+        }
+        else{
+
+            $state.go('signin');
+        }
+
+      });
+
   }
 
+  $rootScope.user = null;
 })
 .controller('ForgotPasswordCtrl', function($scope, $rootScope, $state){
 
@@ -35,12 +78,10 @@ angular.module('starter.controllers', [])
       console.log("error");
   }
 })
-.controller('DashCtrl', function($scope, $state, $rootScope, DashboardData) {
+.controller('DashCtrl', function($scope, $state, $rootScope, $http) {
 
   // show the contents of dash
-  var u = DashboardData.get($rootScope.user.username);
-  $rootScope.user = u;
-  console.log(u);
+  
 })
 
 .controller('SearchCtrl', function($scope,$rootScope) {
@@ -58,7 +99,23 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+  $scope.settings = [
+      {
+        'label': "Account",
+        'ctrl':  'AbcCtrl'
+      },
+      {
+        'label': "Account",
+        'ctrl':  "AbcCtrl"
+      },
+      {
+        'label': "Account",
+        'ctrl':   "AbcCtrl"
+      }
+  ];
+})
+.controller('AbcCtrl', function($scope){
+  console.log("ABC");
+})
+
+;

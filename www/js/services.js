@@ -1,5 +1,5 @@
 angular.module('starter.services', [])
-.factory("DashboardData", function(){
+.factory("DashboardData", function($http){
 
   var u = [{
     id: 0,
@@ -37,5 +37,7 @@ angular.module('starter.services', [])
                           }
 
     }
+
+    
   };
 });

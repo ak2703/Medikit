@@ -1,14 +1,12 @@
 <ion-view view-title="Find">
   <ion-content>
-  
+
   <div class="list list-inset">
-    <label class="item item-input">
-      
-      <input type="text" placeholder="Search" ng-model="symptoms">
-      <button class="button icon ion-gear-a" ng-click="search(symptoms)"></button>
-      
-    </label>
-  </div>  
+    <span class="item item-input">
+    <i class="icon ion-search placeholder-icon" ng-click="search(symptoms)"></i>
+    <input type="text" placeholder="Search" ng-model="symptoms">
+    </span>
+  </div> 
 
   </ion-content>
 </ion-view>
