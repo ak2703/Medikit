@@ -98,24 +98,15 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = [
-      {
-        'label': "Account",
-        'ctrl':  'AbcCtrl'
-      },
-      {
-        'label': "Account",
-        'ctrl':  "AbcCtrl"
-      },
-      {
-        'label': "Account",
-        'ctrl':   "AbcCtrl"
-      }
-  ];
-})
-.controller('AbcCtrl', function($scope){
-  console.log("ABC");
-})
+.controller('AppointmentCtrl', function($scope) {
+  
+  })
+
+.controller('AccountCtrl', function($scope, $state) {
+  
+    $scope.goToAppointment = function(){
+      $state.go('appointments')
+    };
+  });
 
 ;
