@@ -1,6 +1,4 @@
 angular.module('starter.controllers', [])
-
-
 .controller('SignInCtrl', function($scope, $state, $rootScope, $ionicPopup, $timeout, $http){
 
   
@@ -96,26 +94,6 @@ angular.module('starter.controllers', [])
     console.log(symptoms);
   }
 
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = [
-      {
-        'label': "Account",
-        'ctrl':  'AbcCtrl'
-      },
-      {
-        'label': "Account",
-        'ctrl':  "AbcCtrl"
-      },
-      {
-        'label': "Account",
-        'ctrl':   "AbcCtrl"
-      }
-  ];
-})
-.controller('AbcCtrl', function($scope){
-  console.log("ABC");
 })
 
 ;

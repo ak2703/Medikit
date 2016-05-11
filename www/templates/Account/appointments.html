@@ -1,5 +1,13 @@
 <ion-view view-title="Account">
   <ion-content>
- 	Appointments
-  </ion-content>
+    <ion-list class="list" >
+    <li class="item" ng-repeat="appointment in appointments">
+      <div>
+      	<div>
+      		You have appointment with </br> Dr.{{ appointment.doc }} today at {{ appointment.time}}.
+      	</div> 
+
+      </div>
+    </li>
+    </ion-list> </ion-content>
  </ion-view>

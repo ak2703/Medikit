@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ion-autocomplete', 'starter.controllers', 'account.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -103,6 +103,41 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/account/appointments',
       templateUrl: 'templates/Account/appointments.html',
       controller: 'AppointmentCtrl'
+      
+    })
+  .state('records', {
+
+      url: '/account/records',
+      templateUrl: 'templates/Account/records.html',
+      controller: 'RecordCtrl'
+      
+    })
+  .state('reports', {
+
+      url: '/account/reports',
+      templateUrl: 'templates/Account/reports.html',
+      controller: 'AppointmentCtrl'
+      
+    })
+  .state('billing', {
+
+      url: '/account/billing',
+      templateUrl: 'templates/Account/billing.html',
+      controller: 'AppointmentCtrl'
+      
+    })
+  .state('insurance', {
+
+      url: '/account/insurance',
+      templateUrl: 'templates/Account/insurance.html',
+      controller: 'AppointmentCtrl'
+      
+    })
+  .state('settings', {
+
+      url: '/account/settings',
+      templateUrl: 'templates/Account/settings.html',
+      controller: 'SettingsCtrl'
       
     })
 
