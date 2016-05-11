@@ -1,0 +1,30 @@
+<ion-view view-title="Find">
+  <ion-content>
+
+  <div class="list list-inset">
+    <span class="item item-input">
+    <i class="icon ion-search placeholder-icon" ng-click="search(model)"></i>
+    <input 
+			ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                       ng-model="model"
+                       item-value-key="ID"
+                       item-view-value-key="Name"
+                       items-method="getTestItems(query)"
+                       items-method-value-key="items"
+                       placeholder="What are you feeling ?"
+                       items-clicked-method="itemsClicked(callback)"
+                       items-removed-method="itemsRemoved(callback)"
+                       />
+
+
+
+    >
+    </span>
+  </div> 
+  <div class="card" ng-show="show">
+  <div class="item item-text-wrap" >
+    You might be suffering from : </br><ul ng-repeat="res in results"><li>{{res.Issue.Name}}</li> </ul>
+  </div>
+</div>
+  </ion-content>
+</ion-view>

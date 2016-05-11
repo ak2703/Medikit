@@ -1,2 +1,3 @@
 # Medikit
-Manage your health , Find doctors
+Manage your health , Find nearby doctors
+
